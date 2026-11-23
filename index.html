@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-hzZMwrKnamaEkp59a4Cxiol3lNs4QAyv8fzxeRxpJdI=' 'sha256-zAFRMKqFIefwiPiImOupSczcv7ON8L0Sm0S3Jzw6b0E=' 'sha256-jovxdocEEfrGW/re+PXG2v0Nm8Ah1l42/4u3DFrOjh8='; style-src 'self' 'unsafe-inline' data:; img-src 'self' data: blob:; font-src 'self' data:; connect-src https://generativelanguage.googleapis.com; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; media-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-hzZMwrKnamaEkp59a4Cxiol3lNs4QAyv8fzxeRxpJdI=' 'sha256-zAFRMKqFIefwiPiImOupSczcv7ON8L0Sm0S3Jzw6b0E=' 'sha256-LUCUNzIcqrHqat7fCUsJgkJg4GX6W8rwCLM68QHapAQ='; style-src 'self' 'unsafe-inline' data:; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://generativelanguage.googleapis.com https://api.polar.sh https://api.gumroad.com; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; media-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'">
     <title>EduEval Local - Sistema de Evaluación Docente Offline</title>
     <meta name="theme-color" content="#0f172a">
     <meta name="application-name" content="EduEval Local">
@@ -22,6 +22,27 @@
         #pwa-aviso .pwa-fila { display: flex; gap: 0.5rem; margin-top: 0.625rem; justify-content: flex-end; }
         #pwa-aviso button { border-radius: 0.5rem; padding: 0.375rem 0.75rem; font-weight: 600; font-size: 0.8125rem; cursor: pointer; border: 1px solid #475569; background: transparent; color: #e2e8f0; }
         #pwa-aviso button.pwa-principal { background: #0284c7; border-color: #0284c7; color: #fff; }
+        #licencia-pill { position: fixed; left: 1rem; bottom: 1rem; z-index: 65; display: flex; align-items: center; gap: .625rem; background: #0f172a; color: #e2e8f0; border: 1px solid #475569; border-radius: 999px; padding: .375rem .5rem .375rem .875rem; font-size: .8125rem; box-shadow: 0 6px 18px rgba(0,0,0,.3); }
+        #licencia-pill.hidden, #licencia-modal.hidden { display: none; }
+        #licencia-pill.lic-urgente { border-color: #f59e0b; }
+        #licencia-pill button { background: #0284c7; color: #fff; border: 0; border-radius: 999px; padding: .25rem .75rem; font-weight: 600; font-size: .75rem; cursor: pointer; }
+        body.tiene-pill #pwa-aviso { bottom: 4.25rem; }
+        #licencia-modal { position: fixed; inset: 0; z-index: 90; background: rgba(15,23,42,.82); display: flex; align-items: center; justify-content: center; padding: 1rem; }
+        #licencia-modal .lic-caja { background: #fff; color: #0f172a; width: 100%; max-width: 30rem; border-radius: .875rem; padding: 1.5rem; box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+        #licencia-modal h2 { font-size: 1.25rem; font-weight: 700; margin: 0 0 .5rem; }
+        #licencia-modal p { font-size: .9rem; color: #475569; margin: 0 0 .75rem; }
+        #licencia-modal input { width: 100%; padding: .55rem .75rem; border: 1px solid #cbd5e1; border-radius: .5rem; font-size: .9rem; margin: .25rem 0 .5rem; }
+        .lic-etq { font-size: .8rem; font-weight: 600; color: #334155; }
+        .lic-compra { margin-bottom: .5rem; }
+        .lic-enlace { display: inline-block; font-weight: 600; font-size: .9rem; color: #0369a1; text-decoration: underline; }
+        .lic-msg { min-height: 1.25rem; font-size: .8125rem; }
+        .lic-ok { color: #047857; } .lic-err { color: #be123c; }
+        .lic-fila { display: flex; gap: .5rem; margin: .5rem 0 1rem; }
+        #licencia-modal .lic-fila button, #licencia-modal .lic-secundario { border: 1px solid #94a3b8; background: #fff; color: #0f172a; border-radius: .5rem; padding: .5rem .875rem; font-weight: 600; font-size: .85rem; cursor: pointer; }
+        #licencia-modal .lic-fila button.lic-principal { background: #059669; border-color: #059669; color: #fff; }
+        #licencia-modal button:disabled { opacity: .6; cursor: wait; }
+        .lic-datos { border-top: 1px solid #e2e8f0; padding-top: .75rem; font-size: .78rem; color: #475569; display: flex; flex-direction: column; gap: .5rem; align-items: flex-start; }
+        body.lic-abierto { overflow: hidden; }
     </style>
     <!-- Font Awesome Free 6.4.0, hoja y fuentes incluidas localmente. -->
     <style id="fontawesome-local">/*!
@@ -268,7 +289,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
 
             <!-- FOOTER SIDEBAR -->
             <div class="p-3 border-t border-slate-800 text-[11px] text-slate-400 text-center">
-                <span>Versión Local 2.16 LOMLOE</span>
+                <span>Versión Local 2.17 LOMLOE</span>
             </div>
         </aside>
 
@@ -849,6 +870,27 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
                     <p class="text-[11px] text-slate-400">Funciona en Chrome y Edge. Por seguridad, el navegador te pedirá confirmar el permiso sobre la carpeta al abrir EduEval en cada sesión.</p>
                 </div>
 
+                <!-- LICENCIA (solo visible cuando el sitio publica licencia-config.json con "requerida": true) -->
+                <div id="licencia-card" class="hidden bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 shrink-0 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center text-xl"><i class="fa-solid fa-key"></i></div>
+                        <div class="min-w-0">
+                            <h3 class="font-bold text-slate-800 text-lg">Licencia</h3>
+                            <p class="text-sm text-slate-500">Pago único, uso vitalicio. La clave solo se comprueba al activarla; después la aplicación funciona sin conexión.</p>
+                        </div>
+                    </div>
+                    <div id="licencia-estado" class="text-sm rounded-lg border border-slate-200 bg-slate-50 p-3 text-slate-700" role="status" aria-live="polite"></div>
+                    <div id="licencia-form" class="space-y-2">
+                        <div id="licencia-compra" class="text-sm"></div>
+                        <label for="lic-card-clave" class="text-sm font-medium text-slate-700">Clave de licencia</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                            <input type="text" id="lic-card-clave" autocomplete="off" spellcheck="false" placeholder="Pega aquí tu clave" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm">
+                            <button type="button" id="lic-card-btn" data-onclick="activarLicencia('card')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 rounded-lg text-sm transition shadow">Activar licencia</button>
+                        </div>
+                        <div id="lic-card-msg" class="lic-msg" role="status" aria-live="polite"></div>
+                    </div>
+                </div>
+
                 <!-- INSTALAR COMO APLICACIÓN (solo visible cuando se sirve por https) -->
                 <div id="pwa-card" class="hidden bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
                     <div class="flex items-start gap-4">
@@ -998,6 +1040,26 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
     <div id="pwa-aviso" class="hidden no-print" role="alert">
         <div><strong>Hay una versión nueva de EduEval.</strong> Tus datos no se tocan. Se aplicará al recargar.</div>
         <div class="pwa-fila"><button type="button" data-onclick="cerrarAvisoPWA()">Más tarde</button><button type="button" class="pwa-principal" data-onclick="aplicarActualizacionPWA()">Actualizar ahora</button></div>
+    </div>
+    <div id="licencia-pill" class="hidden no-print" role="status">
+        <span id="licencia-pill-texto"></span>
+        <button type="button" data-onclick="licIrALicencia()">Activar licencia</button>
+    </div>
+    <div id="licencia-modal" class="hidden no-print" role="dialog" aria-modal="true" aria-labelledby="lic-modal-titulo">
+        <div class="lic-caja">
+            <h2 id="lic-modal-titulo">Activar licencia</h2>
+            <p id="lic-modal-texto"></p>
+            <div id="lic-modal-compra" class="lic-compra"></div>
+            <label for="lic-modal-clave" class="lic-etq">Clave de licencia</label>
+            <input type="text" id="lic-modal-clave" autocomplete="off" spellcheck="false" placeholder="Pega aquí tu clave">
+            <div id="lic-modal-msg" class="lic-msg" role="status" aria-live="polite"></div>
+            <div class="lic-fila">
+                <button type="button" id="lic-modal-btn" class="lic-principal" data-onclick="activarLicencia('modal')">Activar</button>
+                <button type="button" id="lic-modal-cerrar" data-onclick="licCerrarModal()">Cerrar</button>
+            </div>
+            <div class="lic-datos"><i class="fa-solid fa-shield-halved"></i> Tus datos no se pierden ni se envían a ningún sitio: siguen cifrados en este dispositivo. Mientras tanto puedes guardar una copia.
+                <button type="button" class="lic-secundario" data-onclick="exportarBackup()">Exportar copia de mis datos</button></div>
+        </div>
     </div>
     <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col space-y-2 no-print"></div>
 
@@ -1787,6 +1849,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
                 mejorarAccesibilidad();
                 iniciarCopiasAuto();
                 renderPWAUI();
+                iniciarLicencia();
             } catch (e) {
                 console.error('No se pudo desbloquear el almacenamiento cifrado de EduEval', e);
                 document.getElementById('cifrado-local-titulo').innerText = 'No se pudo abrir el almacenamiento';
@@ -4338,7 +4401,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
         async function generarTextoBackupCifrado(extraMeta) {
             const est = JSON.parse(JSON.stringify(appState));
             est.apiConfig = { provider: appState.apiConfig?.provider || 'gemini', model: appState.apiConfig?.model || '' };
-            const payload = { ...est, _meta: { app: 'EduEval Local', version: '2.16', exportedAt: new Date().toISOString(), externalCredentialsOmitted: true, ...(extraMeta || {}) } };
+            const payload = { ...est, _meta: { app: 'EduEval Local', version: '2.17', exportedAt: new Date().toISOString(), externalCredentialsOmitted: true, ...(extraMeta || {}) } };
             return JSON.stringify(await cifrarObjetoLocal(payload, 'backup'));
         }
 
@@ -4487,6 +4550,187 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
             navigator.serviceWorker.addEventListener('controllerchange', () => { if (_pwaRecargando) location.reload(); else renderPWAUI(); });
         }
         if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciarPWA); else iniciarPWA();
+
+        // ===== EduEval 2.17: licencia (prueba de 30 días + licencia vitalicia) =====
+        // Solo se activa cuando se publica un archivo «licencia-config.json» junto a index.html con "requerida": true.
+        // Sin ese archivo (o en el archivo único abierto desde el disco) la aplicación funciona libre, como siempre.
+        // Importante: aquí solo viajan la clave de licencia y una etiqueta del dispositivo. Nunca datos de alumnado.
+        const LIC_STORAGE = 'edueval_licencia_v1';
+        const LIC_DIA = 86400000;
+        let _licCfg = null, _licIniciada = false, _licTemporizador = null;
+        function licLeer() { try { const o = JSON.parse(localStorage.getItem(LIC_STORAGE) || 'null'); return (o && typeof o === 'object') ? o : {}; } catch (_) { return {}; } }
+        function licGuardar(o) { try { localStorage.setItem(LIC_STORAGE, JSON.stringify(o)); } catch (_) {} }
+        function licConfigValida(c) {
+            if (!c || typeof c !== 'object' || typeof c.requerida !== 'boolean') return null;
+            const https = u => typeof u === 'string' && /^https:\/\/[^\s]+$/.test(u);
+            const cfg = { requerida: c.requerida, diasPrueba: Math.min(365, Math.max(1, parseInt(c.diasPrueba, 10) || 30)), proveedor: String(c.proveedor || 'polar'),
+                precioTexto: typeof c.precioTexto === 'string' ? c.precioTexto.slice(0, 20) : '', urlCompra: https(c.urlCompra) ? c.urlCompra : '',
+                maxDispositivos: Math.min(20, Math.max(1, parseInt(c.maxDispositivos, 10) || 3)), revalidarCadaDias: Math.min(365, Math.max(1, parseInt(c.revalidarCadaDias, 10) || 30)),
+                endpoint: (typeof c.endpoint === 'string' && /^(\/[A-Za-z0-9_\-\/.]*|https:\/\/[^\s]+)$/.test(c.endpoint)) ? c.endpoint : '',
+                polar: { organizationId: String(c.polar?.organizationId || '') }, gumroad: { productId: String(c.gumroad?.productId || '') } };
+            if (!['polar', 'gumroad', 'proxy'].includes(cfg.proveedor)) return null;
+            return cfg;
+        }
+        async function licCargarConfig() {
+            const guardado = licLeer();
+            if (!/^https?:$/.test(location.protocol)) return null;
+            try {
+                const r = await fetch('licencia-config.json', { cache: 'no-store' });
+                if (r.status === 404) { if (guardado.cfg) { delete guardado.cfg; licGuardar(guardado); } return null; }
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                const cfg = licConfigValida(await r.json());
+                if (!cfg) throw new Error('Configuración de licencia no válida');
+                guardado.cfg = cfg; licGuardar(guardado); return cfg;
+            } catch (_) { return licConfigValida(guardado.cfg); }   // sin conexión: la última conocida
+        }
+        function licCalcular() {
+            const cfg = _licCfg; if (!cfg || !cfg.requerida) return { tipo: 'libre' };
+            const s = licLeer(), ahora = Date.now();
+            if (s.lic && !s.lic.revocada) return { tipo: 'activa', lic: s.lic };
+            if (s.lic && s.lic.revocada) return { tipo: 'caducada', motivo: 'revocada' };
+            const visto = Math.max(ahora, s.visto || 0), inicio = s.inicio || ahora;
+            const restantes = Math.ceil((inicio + cfg.diasPrueba * LIC_DIA - visto) / LIC_DIA);
+            return restantes > 0 ? { tipo: 'prueba', restantes } : { tipo: 'caducada', motivo: 'prueba' };
+        }
+        function licTocarReloj() { const s = licLeer(); const ahora = Date.now(); if (!s.inicio) s.inicio = ahora; s.visto = Math.max(ahora, s.visto || 0); licGuardar(s); }
+        function licEnmascarar(k) { k = String(k || ''); return k.length > 4 ? '••••-' + k.slice(-4) : '••••'; }
+        function licMensajeError(e) {
+            const m = { limite: 'Esta clave ya está activada en el número máximo de dispositivos. Desactiva alguno desde el portal del comprador de la plataforma de pago o escribe al soporte.',
+                invalida: 'La clave no es válida. Cópiala tal como aparece en el correo de compra, sin espacios.',
+                revocada: 'Esta clave ya no es válida (compra reembolsada o desactivada).',
+                red: 'No se ha podido conectar. Comprueba tu conexión a internet e inténtalo de nuevo. Solo hace falta estar conectado para activar.',
+                servidor: 'El servicio de licencias no respondió bien. Inténtalo de nuevo en unos minutos.' };
+            return m[e?.codigo] || m.servidor;
+        }
+        function licError(codigo, detalle) { const e = new Error(detalle || codigo); e.codigo = codigo; return e; }
+        async function licPeticion(url, opciones) {
+            const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 15000);
+            try { return await fetch(url, { ...opciones, signal: ctl.signal, credentials: 'omit', referrerPolicy: 'no-referrer' }); }
+            catch (_) { throw licError('red'); }
+            finally { clearTimeout(t); }
+        }
+        async function licActivarRemoto(clave, etiqueta) {
+            const cfg = _licCfg;
+            if (cfg.endpoint) {   // proxy propio opcional (plan B si la plataforma no permite llamadas desde el navegador)
+                const r = await licPeticion(cfg.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ accion: 'activar', proveedor: cfg.proveedor === 'proxy' ? undefined : cfg.proveedor, clave, etiqueta }) });
+                const j = await r.json().catch(() => ({}));
+                if (r.ok && j.ok) return { activacion: String(j.activacion || '') };
+                throw licError(['limite', 'invalida', 'revocada'].includes(j.codigo) ? j.codigo : 'servidor');
+            }
+            if (cfg.proveedor === 'polar') {
+                if (!cfg.polar.organizationId) throw licError('servidor', 'Falta organizationId en licencia-config.json');
+                const r = await licPeticion('https://api.polar.sh/v1/customer-portal/license-keys/activate', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ key: clave, organization_id: cfg.polar.organizationId, label: etiqueta }) });
+                const j = await r.json().catch(() => ({}));
+                if (r.ok) { const st = j?.license_key?.status; if (st && st !== 'granted') throw licError('revocada'); return { activacion: String(j.id || '') }; }
+                const det = typeof j.detail === 'string' ? j.detail : JSON.stringify(j.detail || '');
+                if (r.status === 403 && /limit/i.test(det)) throw licError('limite');
+                if (r.status === 404 || r.status === 422 || r.status === 400) throw licError('invalida');
+                throw licError('servidor');
+            }
+            if (cfg.proveedor === 'gumroad') {
+                if (!cfg.gumroad.productId) throw licError('servidor', 'Falta productId en licencia-config.json');
+                const verificar = async inc => { const cuerpo = new URLSearchParams({ product_id: cfg.gumroad.productId, license_key: clave, increment_uses_count: inc ? 'true' : 'false' });
+                    const r = await licPeticion('https://api.gumroad.com/v2/licenses/verify', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' }, body: cuerpo.toString() });
+                    const j = await r.json().catch(() => ({})); return { r, j }; };
+                const a = await verificar(false);
+                if (a.r.status === 404 || (a.j && a.j.success === false)) throw licError('invalida');
+                if (!a.r.ok) throw licError('servidor');
+                const p = a.j.purchase || {}; if (p.refunded || p.chargebacked || p.disputed) throw licError('revocada');
+                if ((a.j.uses || 0) >= cfg.maxDispositivos) throw licError('limite');
+                const b = await verificar(true); if (!b.r.ok || b.j.success === false) throw licError('servidor');
+                return { activacion: '' };
+            }
+            throw licError('servidor');
+        }
+        async function licValidarRemoto(lic) {
+            // true = sigue válida, false = ya no lo es; lanza 'red'/'servidor' si no se puede saber
+            const cfg = _licCfg;
+            if (cfg.endpoint) { const r = await licPeticion(cfg.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ accion: 'validar', proveedor: cfg.proveedor === 'proxy' ? undefined : cfg.proveedor, clave: lic.clave, activacion: lic.activacion }) }); const j = await r.json().catch(() => ({})); if (!r.ok) throw licError('servidor'); return j.ok === true; }
+            if (cfg.proveedor === 'polar') {
+                const r = await licPeticion('https://api.polar.sh/v1/customer-portal/license-keys/validate', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ key: lic.clave, organization_id: cfg.polar.organizationId, activation_id: lic.activacion || undefined }) });
+                if (r.status === 404) return false; if (!r.ok) throw licError('servidor');
+                const j = await r.json().catch(() => ({})); return j.status === 'granted';
+            }
+            if (cfg.proveedor === 'gumroad') {
+                const r = await licPeticion('https://api.gumroad.com/v2/licenses/verify', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' }, body: new URLSearchParams({ product_id: cfg.gumroad.productId, license_key: lic.clave, increment_uses_count: 'false' }).toString() });
+                if (r.status === 404) return false; if (!r.ok) throw licError('servidor');
+                const j = await r.json().catch(() => ({})); const p = j.purchase || {}; return j.success !== false && !p.refunded && !p.chargebacked && !p.disputed;
+            }
+            throw licError('servidor');
+        }
+        function licEtiquetaDispositivo() {
+            let id = ''; try { const a = new Uint8Array(4); crypto.getRandomValues(a); id = Array.from(a, b => b.toString(16).padStart(2, '0')).join(''); } catch (_) { id = String(Date.now()); }
+            return 'EduEval ' + (pwaEnModoApp?.() ? 'app' : 'web') + ' ' + new Date().toISOString().slice(0, 10) + ' ' + id;
+        }
+        async function activarLicencia(donde) {
+            const inp = document.getElementById(donde === 'card' ? 'lic-card-clave' : 'lic-modal-clave'); if (!inp) return;
+            const msg = document.getElementById(donde === 'card' ? 'lic-card-msg' : 'lic-modal-msg');
+            const clave = String(inp.value || '').trim().replace(/\s+/g, '');
+            const mostrar = (t, ok) => { if (msg) { msg.textContent = t; msg.className = 'lic-msg ' + (ok ? 'lic-ok' : 'lic-err'); } };
+            if (clave.length < 8 || clave.length > 120) return mostrar('Escribe la clave de licencia completa.', false);
+            if (!_licCfg || !_licCfg.requerida) return;
+            const btn = document.getElementById(donde === 'card' ? 'lic-card-btn' : 'lic-modal-btn'); if (btn) btn.disabled = true;
+            mostrar('Comprobando la clave…', true);
+            try {
+                const res = await licActivarRemoto(clave, licEtiquetaDispositivo());
+                const s = licLeer(); s.lic = { proveedor: _licCfg.proveedor, clave, activacion: res.activacion || '', desde: Date.now(), ultimaValidacion: Date.now() }; licGuardar(s);
+                inp.value = ''; mostrar('Licencia activada. ¡Gracias!', true);
+                try { showToast('Licencia activada. Ya puedes usar EduEval sin límite de tiempo.', 'success'); } catch (_) {}
+                renderLicenciaUI();
+            } catch (e) { mostrar(licMensajeError(e), false); }
+            finally { if (btn) btn.disabled = false; }
+        }
+        async function licRevalidar() {
+            const s = licLeer(); if (!s.lic || s.lic.revocada || !_licCfg || !navigator.onLine) return;
+            if (Date.now() - (s.lic.ultimaValidacion || 0) < _licCfg.revalidarCadaDias * LIC_DIA) return;
+            try { const ok = await licValidarRemoto(s.lic); const n = licLeer(); if (!n.lic) return;
+                if (ok) n.lic.ultimaValidacion = Date.now(); else n.lic.revocada = true; licGuardar(n); renderLicenciaUI(); } catch (_) { /* sin conexión o error del servicio: se mantiene la licencia */ }
+        }
+        function licAbrirActivar() { const m = document.getElementById('licencia-modal'); if (!m) return; document.body.classList.add('lic-abierto'); m.classList.remove('hidden'); document.getElementById('lic-modal-clave')?.focus(); }
+        function licCerrarModal() { if (licCalcular().tipo === 'caducada') return; document.getElementById('licencia-modal')?.classList.add('hidden'); document.body.classList.remove('lic-abierto'); }
+        function licIrALicencia() { try { switchTab('backups'); setTimeout(() => document.getElementById('licencia-card')?.scrollIntoView({ block: 'center' }), 150); } catch (_) {} }
+        function renderLicenciaUI() {
+            const e = licCalcular();
+            const pill = document.getElementById('licencia-pill'), modal = document.getElementById('licencia-modal'), card = document.getElementById('licencia-card');
+            if (e.tipo === 'libre') { pill?.classList.add('hidden'); card?.classList.add('hidden'); if (modal && !modal.classList.contains('lic-forzado')) modal.classList.add('hidden'); document.body.classList.remove('lic-abierto', 'tiene-pill'); return; }
+            const cfg = _licCfg || {}; const precio = cfg.precioTexto ? ' (' + cfg.precioTexto + ')' : '';
+            const compra = cfg.urlCompra ? '<a href="' + escaparHtmlSeguro(cfg.urlCompra) + '" target="_blank" rel="noopener noreferrer" class="lic-enlace">Comprar licencia' + escaparHtmlSeguro(precio) + '</a>' : '';
+            // píldora inferior durante la prueba
+            if (pill) {
+                if (e.tipo === 'prueba') { pill.classList.remove('hidden'); document.body.classList.add('tiene-pill'); pill.classList.toggle('lic-urgente', e.restantes <= 7);
+                    document.getElementById('licencia-pill-texto').textContent = 'Prueba gratuita: ' + (e.restantes === 1 ? 'queda 1 día' : 'quedan ' + e.restantes + ' días'); }
+                else { pill.classList.add('hidden'); document.body.classList.remove('tiene-pill'); }
+            }
+            // tarjeta en Copias de seguridad
+            if (card) {
+                card.classList.remove('hidden');
+                const est = document.getElementById('licencia-estado'), form = document.getElementById('licencia-form');
+                if (e.tipo === 'activa') { est.innerHTML = '<i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> <strong>Licencia vitalicia activada</strong> (clave ' + escaparHtmlSeguro(licEnmascarar(e.lic.clave)) + '). Gracias por apoyar el proyecto.'; form.classList.add('hidden'); }
+                else if (e.tipo === 'prueba') { est.innerHTML = '<i class="fa-solid fa-hourglass-half text-amber-600 mr-1"></i> Prueba gratuita con todas las funciones: ' + (e.restantes === 1 ? 'queda <strong>1 día</strong>' : 'quedan <strong>' + e.restantes + ' días</strong>') + '. Pago único' + escaparHtmlSeguro(precio) + ', para siempre.'; form.classList.remove('hidden'); }
+                else { est.innerHTML = '<i class="fa-solid fa-lock text-rose-600 mr-1"></i> ' + (e.motivo === 'revocada' ? 'La licencia ya no es válida.' : 'La prueba gratuita ha terminado.'); form.classList.remove('hidden'); }
+                const cl = document.getElementById('licencia-compra'); if (cl) cl.innerHTML = e.tipo === 'activa' ? '' : compra;
+            }
+            // ventana obligatoria al terminar la prueba (los datos nunca quedan retenidos: siempre se pueden exportar)
+            if (modal) {
+                if (e.tipo === 'caducada') {
+                    modal.classList.remove('hidden'); modal.classList.add('lic-forzado'); document.body.classList.add('lic-abierto');
+                    document.getElementById('lic-modal-titulo').textContent = e.motivo === 'revocada' ? 'La licencia ya no es válida' : 'Tu prueba gratuita ha terminado';
+                    document.getElementById('lic-modal-texto').textContent = e.motivo === 'revocada' ? 'La compra asociada a esta licencia se ha reembolsado o desactivado. Puedes activar otra clave.' : 'Para seguir usando EduEval necesitas una licencia vitalicia: un pago único, sin cuotas.';
+                    document.getElementById('lic-modal-cerrar')?.classList.add('hidden');
+                    const mc = document.getElementById('lic-modal-compra'); if (mc) mc.innerHTML = compra;
+                } else { modal.classList.remove('lic-forzado'); if (e.tipo === 'activa') { modal.classList.add('hidden'); document.body.classList.remove('lic-abierto'); } document.getElementById('lic-modal-cerrar')?.classList.remove('hidden');
+                    document.getElementById('lic-modal-titulo').textContent = 'Activar licencia'; document.getElementById('lic-modal-texto').textContent = 'Pega la clave que recibiste por correo al comprar EduEval.';
+                    const mc = document.getElementById('lic-modal-compra'); if (mc) mc.innerHTML = compra; }
+            }
+        }
+        async function iniciarLicencia() {
+            if (_licIniciada) return; _licIniciada = true;
+            _licCfg = await licCargarConfig();
+            if (!_licCfg || !_licCfg.requerida) { renderLicenciaUI(); return; }
+            licTocarReloj(); renderLicenciaUI(); licRevalidar();
+            _licTemporizador = setInterval(() => { licTocarReloj(); renderLicenciaUI(); licRevalidar(); }, 10 * 60 * 1000);
+            document.addEventListener('visibilitychange', () => { if (!document.hidden) { licTocarReloj(); renderLicenciaUI(); } });
+        }
         async function podarCopiasAuto(dir) {
             const nombres = [];
             for await (const [nombre, entrada] of dir.entries()) if (entrada.kind === 'file' && RE_COPIA_AUTO.test(nombre)) nombres.push(nombre);
@@ -8517,7 +8761,7 @@ Devuelve EXCLUSIVAMENTE un JSON válido con esta estructura exacta:
                 estadoExportado.apiConfig = { provider: appState.apiConfig?.provider || 'gemini', model: appState.apiConfig?.model || '' };
                 const payload = {
                     ...estadoExportado,
-                    _meta: { app: 'EduEval Local', version: '2.16', exportedAt: new Date().toISOString(), externalCredentialsOmitted: true }
+                    _meta: { app: 'EduEval Local', version: '2.17', exportedAt: new Date().toISOString(), externalCredentialsOmitted: true }
                 };
                 const cifrado = await cifrarObjetoLocal(payload, 'backup');
                 const blob = new Blob([JSON.stringify(cifrado, null, 2)], { type: 'application/json' });

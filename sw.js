@@ -1,6 +1,6 @@
 /* EduEval Local - service worker. Solo guarda los archivos de la aplicación; nunca datos de usuario
    (los datos viven cifrados en IndexedDB y este script no los toca). */
-const VERSION = '2.16-6866eb5dd9';
+const VERSION = '2.17-69075078a1';
 const CACHE = 'edueval-' + VERSION;
 const ARCHIVOS = [
   './index.html', './manifest.webmanifest',
@@ -32,6 +32,10 @@ self.addEventListener('fetch', event => {
   if (url.origin !== self.location.origin) return;           // p. ej. la API de IA: no se intercepta
   event.respondWith((async () => {
     const cache = await caches.open(CACHE);
+    if (url.pathname.endsWith('/licencia-config.json')) {   // siempre la versión publicada; la guardada solo sin conexión
+      try { const r = await fetch(req, { cache: 'no-store' }); if (r && r.ok) cache.put(req, r.clone()); return r; }
+      catch (_) { return (await cache.match(req, { ignoreSearch: true })) || Response.error(); }
+    }
     if (req.mode === 'navigate') {
       const index = await cache.match('./index.html');
       if (index) return index;
