@@ -1,11 +1,11 @@
 {
   "requerida": true,
-  "diasPrueba": 10,
+  "diasPrueba": 30,
   "precioTexto": "9 €",
   "urlCompra": "https://REEMPLAZA-POR-TU-ENLACE-DE-COMPRA",
   "proveedor": "polar",
   "maxDispositivos": 3,
-  "revalidarCadaDias": 10,
+  "revalidarCadaDias": 30,
   "polar": { "organizationId": "REEMPLAZA-POR-EL-ID-DE-TU-ORGANIZACION-EN-POLAR" },
   "gumroad": { "productId": "" },
   "endpoint": ""
