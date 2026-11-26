@@ -1,6 +1,6 @@
 /* EduEval Local - service worker. Solo guarda los archivos de la aplicación; nunca datos de usuario
    (los datos viven cifrados en IndexedDB y este script no los toca). */
-const VERSION = '2.17-69075078a1';
+const VERSION = '2.23-f73379b792';
 const CACHE = 'edueval-' + VERSION;
 const ARCHIVOS = [
   './index.html', './manifest.webmanifest',

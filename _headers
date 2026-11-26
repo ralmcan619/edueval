@@ -1,5 +1,5 @@
 /*
-  Content-Security-Policy: default-src 'none'; script-src 'self' 'sha256-hzZMwrKnamaEkp59a4Cxiol3lNs4QAyv8fzxeRxpJdI=' 'sha256-zAFRMKqFIefwiPiImOupSczcv7ON8L0Sm0S3Jzw6b0E=' 'sha256-LUCUNzIcqrHqat7fCUsJgkJg4GX6W8rwCLM68QHapAQ='; style-src 'self' 'unsafe-inline' data:; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' https://generativelanguage.googleapis.com https://api.polar.sh https://api.gumroad.com; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; media-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'sha256-hzZMwrKnamaEkp59a4Cxiol3lNs4QAyv8fzxeRxpJdI=' 'sha256-zAFRMKqFIefwiPiImOupSczcv7ON8L0Sm0S3Jzw6b0E=' 'sha256-s981e7QtmZDTBleeE0wH9/7rXS2dk7t8AAjx/iHIjmQ='; style-src 'self' 'unsafe-inline' data:; img-src 'self' data: blob:; font-src 'self' data:; connect-src https://generativelanguage.googleapis.com; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; media-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; frame-ancestors 'none'
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=()
