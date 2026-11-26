@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-hzZMwrKnamaEkp59a4Cxiol3lNs4QAyv8fzxeRxpJdI=' 'sha256-zAFRMKqFIefwiPiImOupSczcv7ON8L0Sm0S3Jzw6b0E=' 'sha256-bIsdM2OOuuC2XPjjcqzvraWpCYHEsCBPyRrgRJTpEz4='; style-src 'self' 'unsafe-inline' data:; img-src 'self' data: blob:; font-src 'self' data:; connect-src https://generativelanguage.googleapis.com; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; media-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-hzZMwrKnamaEkp59a4Cxiol3lNs4QAyv8fzxeRxpJdI=' 'sha256-zAFRMKqFIefwiPiImOupSczcv7ON8L0Sm0S3Jzw6b0E=' 'sha256-Q/6WTxjw66zizXbVJxPDfo0+7JoFvNI2pSU8zv7nk7s='; style-src 'self' 'unsafe-inline' data:; img-src 'self' data: blob:; font-src 'self' data:; connect-src https://generativelanguage.googleapis.com; form-action 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; media-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'">
     <title>EduEval Local - Sistema de Evaluación Docente Offline</title>
     <meta name="theme-color" content="#0f172a">
     <meta name="application-name" content="EduEval Local">
@@ -151,6 +151,24 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
         .ex-hn-est{font-size:.7rem;color:#64748b;white-space:nowrap}
         @media (max-width:640px){.ex-modos{grid-template-columns:1fr}.ex-ej-fila{grid-template-columns:1fr 6rem 2rem}}
     </style>
+    <style id="acerca-estilos">
+        .ac-prueba{width:100%;display:flex;align-items:center;gap:.6rem;text-align:left;padding:.55rem .7rem;border-radius:.75rem;background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.55);color:#fde68a;cursor:pointer;transition:background .15s}
+        .ac-prueba:hover{background:rgba(245,158,11,.24)}
+        .ac-prueba:focus-visible{outline:2px solid #fbbf24;outline-offset:2px}
+        .ac-prueba-ico{width:1.9rem;height:1.9rem;flex-shrink:0;border-radius:.55rem;background:#f59e0b;color:#1c1917;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+        .ac-prueba-txt{display:flex;flex-direction:column;line-height:1.2}
+        .ac-prueba-txt strong{font-size:.72rem;letter-spacing:.06em;color:#fbbf24}
+        .ac-prueba-txt small{font-size:.65rem;color:#fcd34d;opacity:.85;margin-top:.1rem}
+        .ac-logo{width:2.6rem;height:2.6rem;border-radius:.8rem;background:#0369a1;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+        .ac-bloque h4{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#475569;margin:0 0 .35rem}
+        .ac-creditos{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.5rem}
+        .ac-creditos li{border:1px solid #e2e8f0;background:#f8fafc;border-radius:.6rem;padding:.55rem .75rem;font-size:.75rem;line-height:1.5;color:#475569}
+        .ac-creditos li span{color:#64748b}
+        .ac-creditos a{color:#0369a1;text-decoration:underline}
+        .ac-det{border:1px solid #e2e8f0;border-radius:.5rem;margin-top:.4rem}
+        .ac-det summary{cursor:pointer;padding:.45rem .7rem;font-size:.75rem;font-weight:600;color:#334155}
+        .ac-pre{max-height:14rem;overflow:auto;margin:0;padding:.6rem .75rem;border-top:1px solid #e2e8f0;background:#f8fafc;font-size:.65rem;line-height:1.45;white-space:pre-wrap;word-break:break-word;color:#334155}
+    </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-800 flex flex-col h-screen overflow-hidden">
     <div id="modal-clave-backup" class="fixed inset-0 z-[1002] bg-slate-900/80 flex items-center justify-center p-4 hidden">
@@ -177,7 +195,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
                 <div><h2 id="cifrado-local-titulo" class="text-lg font-bold text-slate-900">Proteger datos de EduEval</h2><p class="text-xs text-slate-500">Cifrado local en este dispositivo</p></div>
             </div>
             <p id="cifrado-local-mensaje" class="text-sm text-slate-700 leading-relaxed"></p>
-            <div><label for="cifrado-local-clave" class="block text-xs font-semibold text-slate-700 mb-1">Contraseña maestra (mínimo 10 caracteres; mejor una frase)</label><input id="cifrado-local-clave" type="password" autocomplete="current-password" minlength="6" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm" placeholder="Introduce tu contraseña"></div>
+            <div><label for="cifrado-local-clave" class="block text-xs font-semibold text-slate-700 mb-1">Contraseña maestra (mínimo 6 caracteres; mejor una frase)</label><input id="cifrado-local-clave" type="password" autocomplete="current-password" minlength="6" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm" placeholder="Introduce tu contraseña"></div>
             <div id="cifrado-local-confirmacion-wrap" class="hidden"><label for="cifrado-local-confirmacion" class="block text-xs font-semibold text-slate-700 mb-1">Repite la contraseña</label><input id="cifrado-local-confirmacion" type="password" autocomplete="new-password" minlength="6" class="w-full border border-slate-300 rounded-lg p-2.5 text-sm" placeholder="Repite la contraseña"></div>
             <p id="cifrado-local-error" class="hidden text-xs text-rose-700 bg-rose-50 border border-rose-200 rounded-lg p-2"></p>
             <div class="flex items-start gap-2 bg-amber-50 border border-amber-200 rounded-lg p-3 text-xs text-amber-900"><i class="fa-solid fa-triangle-exclamation mt-0.5"></i><p>EduEval no guarda ni puede recuperar esta contraseña. Si la olvidas, los datos y las copias cifradas no se podrán abrir. Anótala y guárdala fuera del ordenador.</p></div>
@@ -188,7 +206,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
         <form data-onsubmit="event.preventDefault(); cambiarClaveMaestra();" class="w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 space-y-4">
             <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center"><i class="fa-solid fa-key"></i></div><div><h2 class="text-lg font-bold text-slate-900">Cambiar contraseña maestra</h2><p class="text-xs text-slate-500">Se volverán a cifrar los datos y las instantáneas.</p></div></div>
             <div><label for="clave-actual-local" class="block text-xs font-semibold text-slate-700 mb-1">Contraseña actual</label><input id="clave-actual-local" type="password" autocomplete="current-password" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm"></div>
-            <div><label for="clave-nueva-local" class="block text-xs font-semibold text-slate-700 mb-1">Nueva contraseña (mínimo 10 caracteres)</label><input id="clave-nueva-local" type="password" autocomplete="new-password" minlength="6" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm"></div>
+            <div><label for="clave-nueva-local" class="block text-xs font-semibold text-slate-700 mb-1">Nueva contraseña (mínimo 6 caracteres)</label><input id="clave-nueva-local" type="password" autocomplete="new-password" minlength="6" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm"></div>
             <div><label for="clave-nueva-confirmacion-local" class="block text-xs font-semibold text-slate-700 mb-1">Repite la nueva contraseña</label><input id="clave-nueva-confirmacion-local" type="password" autocomplete="new-password" minlength="6" required class="w-full border border-slate-300 rounded-lg p-2.5 text-sm"></div>
             <p id="cambiar-clave-error-local" class="hidden text-xs text-rose-700 bg-rose-50 border border-rose-200 rounded-lg p-2"></p>
             <div class="flex justify-end gap-2 pt-2"><button type="button" data-onclick="cerrarCambioClaveMaestra()" class="px-4 py-2 rounded-lg text-sm text-slate-600 hover:bg-slate-100">Cancelar</button><button id="btn-confirmar-cambio-clave" type="submit" class="px-4 py-2 rounded-lg text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800">Cambiar contraseña</button></div>
@@ -310,9 +328,17 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
                 </div>
             </nav>
 
+            <!-- AVISO VERSIÓN DE PRUEBAS -->
+            <div class="px-3 pb-3 no-print">
+                <button type="button" data-onclick="abrirAcercaDe()" class="ac-prueba" title="Más información sobre esta versión de pruebas">
+                    <span class="ac-prueba-ico"><i class="fa-solid fa-flask" aria-hidden="true"></i></span>
+                    <span class="ac-prueba-txt"><strong>VERSIÓN DE PRUEBAS</strong><small>Haz copias de seguridad con frecuencia</small></span>
+                </button>
+            </div>
+
             <!-- FOOTER SIDEBAR -->
             <div class="p-3 border-t border-slate-800 text-[11px] text-slate-400 text-center">
-                <span>Versión Local 2.23 LOMLOE</span>
+                <button type="button" data-onclick="abrirAcercaDe()" class="hover:text-white hover:underline transition" title="Acerca de EduEval Local y créditos">Versión Local 2.24 LOMLOE · Acerca de</button>
             </div>
         </aside>
 
@@ -1152,7 +1178,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
 <li>Para abrirlo otro día, repite el doble clic o guarda la página en Favoritos con <code>Ctrl</code> + <code>D</code>.</li>
 </ol>
 <p class="ay-aviso">Si al abrirlo ves un montón de texto raro en vez de la aplicación, haz clic derecho sobre el archivo → <em>Abrir con</em> → Chrome o Edge.</p></div></details>
-                        <details class="ay-item" id="ay-q-0-2" data-kw="contrasena clave password primera vez crear cifrar olvidar frase alumna alumnado alumno backup clave contrasena copia discente equipo estudiante estudiantes ordenador password pc portatil respaldo seguridad"><summary>La primera vez me pide una contraseña: ¿cuál pongo?</summary><div class="ay-resp"><p>Inventa una <strong>frase</strong> de al menos 10 caracteres que puedas recordar, por ejemplo <em>«mi clase favorita es 4A 2026»</em>. Escríbela dos veces y pulsa <strong>Cifrar datos y continuar</strong>.</p>
+                        <details class="ay-item" id="ay-q-0-2" data-kw="contrasena clave password primera vez crear cifrar olvidar frase alumna alumnado alumno backup clave contrasena copia discente equipo estudiante estudiantes ordenador password pc portatil respaldo seguridad"><summary>La primera vez me pide una contraseña: ¿cuál pongo?</summary><div class="ay-resp"><p>Inventa una <strong>frase</strong> de al menos 6 caracteres que puedas recordar (cuanto más larga, más segura), por ejemplo <em>«mi clase favorita es 4A 2026»</em>. Escríbela dos veces y pulsa <strong>Cifrar datos y continuar</strong>.</p>
 <p class="ay-aviso"><strong>Anótala en un papel y guárdala en un lugar seguro.</strong> Nadie puede recuperarla, ni siquiera quien te ha pasado la aplicación: si la pierdes, pierdes tus datos y tus copias de seguridad. No hace falta que sea complicada, pero sí que no se te olvide.</p>
 <p>Sirve para que, si alguien usa tu ordenador o encuentra tu copia de seguridad, no pueda leer los datos de tu alumnado.</p></div></details>
                         <details class="ay-item" id="ay-q-0-3" data-kw="empezar comienzo primeros pasos orden tutorial novato guia por donde actividad alumna alumnado alumno backup boletin calculo copia criterio criterios csv discente estudiante estudiantes evaluacion excel ficha hoja informe plantilla reporte respaldo rubrica seguridad tarea trabajo xlsx"><summary>Soy nuevo: ¿por dónde empiezo?</summary><div class="ay-resp"><p>Sigue este orden; con calma, la primera vez lleva menos de una hora:</p>
@@ -1224,7 +1250,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
 <li><strong>iPhone / iPad (Safari):</strong> botón Compartir → <em>Añadir a pantalla de inicio</em>.</li>
 </ul>
 <p>Una vez cargada la primera vez, funciona sin conexión. Los datos siguen guardándose solo en ese dispositivo: la web únicamente sirve los archivos de la aplicación, nunca recibe tus datos. Si abres la aplicación en dos dispositivos, cada uno tiene su propia base de datos (usa las copias para pasar datos de uno a otro).</p></div></details>
-                        <details class="ay-item" id="ay-q-1-3" data-kw="artificial backup clave contrasena copia equipo gemini ia inteligencia ordenador password pc portatil respaldo seguridad"><summary>¿Qué es la contraseña maestra y qué pasa si la olvido?</summary><div class="ay-resp"><p>La primera vez que abres EduEval te pide crear una <strong>contraseña maestra</strong> (mínimo 10 caracteres; es mejor una frase). Con ella se cifran la base de datos, las instantáneas y las copias de seguridad.</p>
+                        <details class="ay-item" id="ay-q-1-3" data-kw="artificial backup clave contrasena copia equipo gemini ia inteligencia ordenador password pc portatil respaldo seguridad"><summary>¿Qué es la contraseña maestra y qué pasa si la olvido?</summary><div class="ay-resp"><p>La primera vez que abres EduEval te pide crear una <strong>contraseña maestra</strong> (mínimo 6 caracteres; es mejor una frase). Con ella se cifran la base de datos, las instantáneas y las copias de seguridad.</p>
 <p class="ay-aviso"><strong>EduEval no guarda ni puede recuperar esta contraseña.</strong> Si la olvidas, ni los datos ni las copias cifradas podrán abrirse. Anótala y guárdala fuera del ordenador.</p>
 <ul>
 <li>Se te pedirá al abrir la aplicación y tras 15 minutos de inactividad (pantalla «EduEval bloqueado»); tus datos siguen guardados.</li>
@@ -1880,6 +1906,428 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
             <div class="flex justify-between items-start gap-3 border-b pb-3"><div><h3 id="hoja-notas-titulo" class="text-lg font-bold text-slate-900">Hoja de notas</h3><p id="hoja-notas-ayuda" class="text-xs text-slate-500 mt-1"></p></div><button type="button" data-onclick="closeModals()" class="text-slate-400 hover:text-slate-600" aria-label="Cerrar"><i class="fa-solid fa-xmark text-xl"></i></button></div>
             <div class="ex-hn-caja"><table id="hoja-notas-tabla" class="ex-hn"></table></div>
             <div class="flex justify-end gap-2 pt-2 border-t"><button type="button" data-onclick="closeModals()" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg">Cancelar</button><button type="button" data-onclick="guardarHojaNotasExamen()" class="px-4 py-2 text-xs font-semibold bg-violet-700 text-white rounded-lg hover:bg-violet-800">Guardar notas</button></div>
+        </div>
+    </div>
+
+    <div id="modal-acerca" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden" role="dialog" aria-modal="true" aria-labelledby="acerca-titulo">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[92vh] flex flex-col">
+            <div class="flex items-start justify-between gap-3 p-5 border-b border-slate-200">
+                <div class="flex items-center gap-3"><span class="ac-logo"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></span><div><h3 id="acerca-titulo" class="text-lg font-bold text-slate-900">EduEval Local</h3><p class="text-xs text-slate-500">Versión 2.24 LOMLOE · Versión de pruebas</p></div></div>
+                <button type="button" data-onclick="closeModals()" class="text-slate-400 hover:text-slate-600" aria-label="Cerrar"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
+            </div>
+            <div class="p-5 overflow-y-auto space-y-4 text-sm text-slate-700">
+                <section class="ac-bloque">
+                    <h4>Autoría</h4>
+                    <p><strong>Ricardo Almendros</strong></p>
+                    <p class="text-xs text-slate-500">© 2026 · Versión de pruebas, todos los derechos reservados.</p>
+                    <p class="text-xs text-slate-600 mt-1">Si tienes sugerencias o encuentras un error, comunícaselo a Ricardo Almendros. Por favor, <strong>no incluyas nombres ni datos del alumnado</strong> en capturas o mensajes.</p>
+                </section>
+                <section class="ac-bloque">
+                    <h4>Tus datos</h4>
+                    <p class="text-xs leading-relaxed">Los datos del alumnado se guardan <strong>solo en este dispositivo</strong>, cifrados con tu contraseña maestra, y la aplicación no los envía a ningún servidor. Si usas la IA (opcional), solo se envía texto que no es personal, y siempre tras una vista previa que puedes cancelar.</p>
+                </section>
+                <section class="ac-bloque">
+                    <h4>Créditos y licencias de terceros</h4>
+                    <p class="text-xs text-slate-600 mb-2">EduEval Local incluye estos componentes de código abierto, que se usan según sus licencias:</p>
+                    <ul class="ac-creditos">
+                        <li><strong>SheetJS Community Edition 0.18.5</strong> <span>(lectura y creación de archivos Excel y CSV)</span><br>© 2013-present SheetJS LLC · Licencia Apache 2.0 · <a href="https://sheetjs.com" target="_blank" rel="noopener noreferrer">sheetjs.com</a></li>
+                        <li><strong>Font Awesome Free 6.4.0</strong> <span>(iconos)</span><br>© 2023 Fonticons, Inc. · Iconos CC BY 4.0, fuentes SIL OFL 1.1, código MIT · <a href="https://fontawesome.com/license/free" target="_blank" rel="noopener noreferrer">fontawesome.com/license/free</a></li>
+                        <li><strong>Tailwind CSS 3.4.17</strong> <span>(estilos de la interfaz)</span><br>© Tailwind Labs, Inc. · Licencia MIT · <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer">tailwindcss.com</a></li>
+                    </ul>
+                    <p class="text-xs text-slate-600 mt-2"><strong>Servicio opcional (no incluido):</strong> Google Gemini API. Tú aportas tu propia clave y el servicio se rige por las condiciones de Google.</p>
+                </section>
+                <section class="ac-bloque">
+                    <h4>Textos completos de las licencias</h4>
+                    <details class="ac-det"><summary>Licencia Apache 2.0 (SheetJS)</summary><pre class="ac-pre">Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+
+   1. Definitions.
+
+      "License" shall mean the terms and conditions for use, reproduction,
+      and distribution as defined by Sections 1 through 9 of this document.
+
+      "Licensor" shall mean the copyright owner or entity authorized by
+      the copyright owner that is granting the License.
+
+      "Legal Entity" shall mean the union of the acting entity and all
+      other entities that control, are controlled by, or are under common
+      control with that entity. For the purposes of this definition,
+      "control" means (i) the power, direct or indirect, to cause the
+      direction or management of such entity, whether by contract or
+      otherwise, or (ii) ownership of fifty percent (50%) or more of the
+      outstanding shares, or (iii) beneficial ownership of such entity.
+
+      "You" (or "Your") shall mean an individual or Legal Entity
+      exercising permissions granted by this License.
+
+      "Source" form shall mean the preferred form for making modifications,
+      including but not limited to software source code, documentation
+      source, and configuration files.
+
+      "Object" form shall mean any form resulting from mechanical
+      transformation or translation of a Source form, including but
+      not limited to compiled object code, generated documentation,
+      and conversions to other media types.
+
+      "Work" shall mean the work of authorship, whether in Source or
+      Object form, made available under the License, as indicated by a
+      copyright notice that is included in or attached to the work
+      (an example is provided in the Appendix below).
+
+      "Derivative Works" shall mean any work, whether in Source or Object
+      form, that is based on (or derived from) the Work and for which the
+      editorial revisions, annotations, elaborations, or other modifications
+      represent, as a whole, an original work of authorship. For the purposes
+      of this License, Derivative Works shall not include works that remain
+      separable from, or merely link (or bind by name) to the interfaces of,
+      the Work and Derivative Works thereof.
+
+      "Contribution" shall mean any work of authorship, including
+      the original version of the Work and any modifications or additions
+      to that Work or Derivative Works thereof, that is intentionally
+      submitted to Licensor for inclusion in the Work by the copyright owner
+      or by an individual or Legal Entity authorized to submit on behalf of
+      the copyright owner. For the purposes of this definition, "submitted"
+      means any form of electronic, verbal, or written communication sent
+      to the Licensor or its representatives, including but not limited to
+      communication on electronic mailing lists, source code control systems,
+      and issue tracking systems that are managed by, or on behalf of, the
+      Licensor for the purpose of discussing and improving the Work, but
+      excluding communication that is conspicuously marked or otherwise
+      designated in writing by the copyright owner as "Not a Contribution."
+
+      "Contributor" shall mean Licensor and any individual or Legal Entity
+      on behalf of whom a Contribution has been received by Licensor and
+      subsequently incorporated within the Work.
+
+   2. Grant of Copyright License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      copyright license to reproduce, prepare Derivative Works of,
+      publicly display, publicly perform, sublicense, and distribute the
+      Work and such Derivative Works in Source or Object form.
+
+   3. Grant of Patent License. Subject to the terms and conditions of
+      this License, each Contributor hereby grants to You a perpetual,
+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
+      (except as stated in this section) patent license to make, have made,
+      use, offer to sell, sell, import, and otherwise transfer the Work,
+      where such license applies only to those patent claims licensable
+      by such Contributor that are necessarily infringed by their
+      Contribution(s) alone or by combination of their Contribution(s)
+      with the Work to which such Contribution(s) was submitted. If You
+      institute patent litigation against any entity (including a
+      cross-claim or counterclaim in a lawsuit) alleging that the Work
+      or a Contribution incorporated within the Work constitutes direct
+      or contributory patent infringement, then any patent licenses
+      granted to You under this License for that Work shall terminate
+      as of the date such litigation is filed.
+
+   4. Redistribution. You may reproduce and distribute copies of the
+      Work or Derivative Works thereof in any medium, with or without
+      modifications, and in Source or Object form, provided that You
+      meet the following conditions:
+
+      (a) You must give any other recipients of the Work or
+          Derivative Works a copy of this License; and
+
+      (b) You must cause any modified files to carry prominent notices
+          stating that You changed the files; and
+
+      (c) You must retain, in the Source form of any Derivative Works
+          that You distribute, all copyright, patent, trademark, and
+          attribution notices from the Source form of the Work,
+          excluding those notices that do not pertain to any part of
+          the Derivative Works; and
+
+      (d) If the Work includes a "NOTICE" text file as part of its
+          distribution, then any Derivative Works that You distribute must
+          include a readable copy of the attribution notices contained
+          within such NOTICE file, excluding those notices that do not
+          pertain to any part of the Derivative Works, in at least one
+          of the following places: within a NOTICE text file distributed
+          as part of the Derivative Works; within the Source form or
+          documentation, if provided along with the Derivative Works; or,
+          within a display generated by the Derivative Works, if and
+          wherever such third-party notices normally appear. The contents
+          of the NOTICE file are for informational purposes only and
+          do not modify the License. You may add Your own attribution
+          notices within Derivative Works that You distribute, alongside
+          or as an addendum to the NOTICE text from the Work, provided
+          that such additional attribution notices cannot be construed
+          as modifying the License.
+
+      You may add Your own copyright statement to Your modifications and
+      may provide additional or different license terms and conditions
+      for use, reproduction, or distribution of Your modifications, or
+      for any such Derivative Works as a whole, provided Your use,
+      reproduction, and distribution of the Work otherwise complies with
+      the conditions stated in this License.
+
+   5. Submission of Contributions. Unless You explicitly state otherwise,
+      any Contribution intentionally submitted for inclusion in the Work
+      by You to the Licensor shall be under the terms and conditions of
+      this License, without any additional terms or conditions.
+      Notwithstanding the above, nothing herein shall supersede or modify
+      the terms of any separate license agreement you may have executed
+      with Licensor regarding such Contributions.
+
+   6. Trademarks. This License does not grant permission to use the trade
+      names, trademarks, service marks, or product names of the Licensor,
+      except as required for reasonable and customary use in describing the
+      origin of the Work and reproducing the content of the NOTICE file.
+
+   7. Disclaimer of Warranty. Unless required by applicable law or
+      agreed to in writing, Licensor provides the Work (and each
+      Contributor provides its Contributions) on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+      implied, including, without limitation, any warranties or conditions
+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
+      PARTICULAR PURPOSE. You are solely responsible for determining the
+      appropriateness of using or redistributing the Work and assume any
+      risks associated with Your exercise of permissions under this License.
+
+   8. Limitation of Liability. In no event and under no legal theory,
+      whether in tort (including negligence), contract, or otherwise,
+      unless required by applicable law (such as deliberate and grossly
+      negligent acts) or agreed to in writing, shall any Contributor be
+      liable to You for damages, including any direct, indirect, special,
+      incidental, or consequential damages of any character arising as a
+      result of this License or out of the use or inability to use the
+      Work (including but not limited to damages for loss of goodwill,
+      work stoppage, computer failure or malfunction, or any and all
+      other commercial damages or losses), even if such Contributor
+      has been advised of the possibility of such damages.
+
+   9. Accepting Warranty or Additional Liability. While redistributing
+      the Work or Derivative Works thereof, You may choose to offer,
+      and charge a fee for, acceptance of support, warranty, indemnity,
+      or other liability obligations and/or rights consistent with this
+      License. However, in accepting such obligations, You may act only
+      on Your own behalf and on Your sole responsibility, not on behalf
+      of any other Contributor, and only if You agree to indemnify,
+      defend, and hold each Contributor harmless for any liability
+      incurred by, or claims asserted against, such Contributor by reason
+      of your accepting any such warranty or additional liability.
+
+   END OF TERMS AND CONDITIONS
+
+   APPENDIX: How to apply the Apache License to your work.
+
+      To apply the Apache License to your work, attach the following
+      boilerplate notice, with the fields enclosed by brackets "[]"
+      replaced with your own identifying information. (Don't include
+      the brackets!)  The text should be enclosed in the appropriate
+      comment syntax for the file format. We also recommend that a
+      file or class name and description of purpose be included on the
+      same "printed page" as the copyright notice for easier
+      identification within third-party archives.
+
+   Copyright [yyyy] [name of copyright owner]
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.</pre></details>
+                    <details class="ac-det"><summary>Font Awesome Free License</summary><pre class="ac-pre">Fonticons, Inc. (https://fontawesome.com)
+
+--------------------------------------------------------------------------------
+
+Font Awesome Free License
+
+Font Awesome Free is free, open source, and GPL friendly. You can use it for
+commercial projects, open source projects, or really almost whatever you want.
+Full Font Awesome Free license: https://fontawesome.com/license/free.
+
+--------------------------------------------------------------------------------
+
+# Icons: CC BY 4.0 License (https://creativecommons.org/licenses/by/4.0/)
+
+The Font Awesome Free download is licensed under a Creative Commons
+Attribution 4.0 International License and applies to all icons packaged
+as SVG and JS file types.
+
+--------------------------------------------------------------------------------
+
+# Fonts: SIL OFL 1.1 License
+
+In the Font Awesome Free download, the SIL OFL license applies to all icons
+packaged as web and desktop font files.
+
+Copyright (c) 2023 Fonticons, Inc. (https://fontawesome.com)
+with Reserved Font Name: "Font Awesome".
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+http://scripts.sil.org/OFL
+
+SIL OPEN FONT LICENSE
+Version 1.1 - 26 February 2007
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded,
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting — in part or in whole — any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION &amp; CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+
+--------------------------------------------------------------------------------
+
+# Code: MIT License (https://opensource.org/licenses/MIT)
+
+In the Font Awesome Free download, the MIT license applies to all non-font and
+non-icon files.
+
+Copyright 2023 Fonticons, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in the
+Software without restriction, including without limitation the rights to use, copy,
+modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so, subject to the
+following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+--------------------------------------------------------------------------------
+
+# Attribution
+
+Attribution is required by MIT, SIL OFL, and CC BY licenses. Downloaded Font
+Awesome Free files already contain embedded comments with sufficient
+attribution, so you shouldn't need to do anything additional when using these
+files normally.
+
+We've kept attribution comments terse, so we ask that you do not actively work
+to remove them from files, especially code. They're a great way for folks to
+learn about Font Awesome.
+
+--------------------------------------------------------------------------------
+
+# Brand Icons
+
+All brand icons are trademarks of their respective owners. The use of these
+trademarks does not indicate endorsement of the trademark holder by Font
+Awesome, nor vice versa. **Please do not use brand logos for any purpose except
+to represent the company, product, or service to which they refer.**</pre></details>
+                    <details class="ac-det"><summary>Licencia MIT (Tailwind CSS)</summary><pre class="ac-pre">MIT License
+
+Copyright (c) Tailwind Labs, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</pre></details>
+                </section>
+            </div>
+            <div class="flex justify-end p-4 border-t border-slate-200"><button type="button" data-onclick="closeModals()" class="px-4 py-2 text-xs font-semibold bg-violet-700 text-white rounded-lg hover:bg-violet-800">Cerrar</button></div>
         </div>
     </div>
 
@@ -4758,7 +5206,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
             const error=document.getElementById('cifrado-local-error');
             try {
                 if(cryptoDialogModo==='create') {
-                    if(pass.length<10) throw new Error('Usa una contraseña (o frase) de al menos 10 caracteres.');
+                    if(pass.length<6) throw new Error('Usa una contraseña (o frase) de al menos 6 caracteres.');
                     if(pass!==document.getElementById('cifrado-local-confirmacion').value) throw new Error('Las contraseñas no coinciden.');
                     const salt=cryptoApiLocal().getRandomValues(new Uint8Array(16));
                     cryptoSesionLocal={salt,key:await derivarClaveCifradoLocal(pass,salt)};
@@ -4797,7 +5245,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
             btn.disabled=true; btn.innerText='Cifrando datos…'; error.classList.add('hidden');
             try {
                 if(!sesionAnterior) throw new Error('La sesión cifrada no está abierta.');
-                if(claveNueva.length<10) throw new Error('La nueva contraseña debe tener al menos 10 caracteres.');
+                if(claveNueva.length<6) throw new Error('La nueva contraseña debe tener al menos 6 caracteres.');
                 if(claveNueva!==confirmacion) throw new Error('La nueva contraseña y su confirmación no coinciden.');
                 const estadoGuardado=JSON.parse(valoresAnteriores['edueval_app_state']||'null');
                 const snapshotsGuardados=JSON.parse(valoresAnteriores[AUTO_SNAPSHOTS_KEY]||'null');
@@ -5328,7 +5776,7 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
         async function generarTextoBackupCifrado(extraMeta) {
             const est = JSON.parse(JSON.stringify(appState));
             est.apiConfig = { provider: appState.apiConfig?.provider || 'gemini', model: appState.apiConfig?.model || '' };
-            const payload = { ...est, _meta: { app: 'EduEval Local', version: '2.23', exportedAt: new Date().toISOString(), externalCredentialsOmitted: true, ...(extraMeta || {}) } };
+            const payload = { ...est, _meta: { app: 'EduEval Local', version: '2.24', exportedAt: new Date().toISOString(), externalCredentialsOmitted: true, ...(extraMeta || {}) } };
             return JSON.stringify(await cifrarObjetoLocal(payload, 'backup'));
         }
 
@@ -6610,6 +7058,12 @@ t.sheetStubs=true}if(t.type=="array"){t.type="binary";var a=xk(e,t);t.type="arra
                 console.error('Error al proponer criterios con Gemini', err);
                 showToast(escaparHtmlSeguro(err.message || 'No se pudieron proponer criterios.'), 'error', 9000);
             } finally { boton.disabled = false; boton.innerHTML = html; }
+        }
+
+        function abrirAcercaDe() {
+            closeModals();
+            document.getElementById('modal-acerca')?.classList.remove('hidden');
+            document.getElementById('modal-acerca')?.querySelector('button')?.focus();
         }
 
         function openModalExamen(materiaId = '') {
@@ -9852,7 +10306,7 @@ Devuelve EXCLUSIVAMENTE un JSON válido con esta estructura exacta:
                 estadoExportado.apiConfig = { provider: appState.apiConfig?.provider || 'gemini', model: appState.apiConfig?.model || '' };
                 const payload = {
                     ...estadoExportado,
-                    _meta: { app: 'EduEval Local', version: '2.23', exportedAt: new Date().toISOString(), externalCredentialsOmitted: true }
+                    _meta: { app: 'EduEval Local', version: '2.24', exportedAt: new Date().toISOString(), externalCredentialsOmitted: true }
                 };
                 const cifrado = await cifrarObjetoLocal(payload, 'backup');
                 const blob = new Blob([JSON.stringify(cifrado, null, 2)], { type: 'application/json' });

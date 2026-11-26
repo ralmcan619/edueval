@@ -7,11 +7,12 @@ el servidor solo entrega la aplicación.
 ## Contenido
 | Archivo | Para qué sirve |
 |---|---|
-| `index.html` | La aplicación completa (la v2.16) |
+| `index.html` | La aplicación completa (la v2.24) |
 | `manifest.webmanifest` | Nombre, iconos y colores para instalarla |
 | `sw.js` | Guarda la aplicación en el dispositivo (uso sin conexión) y gestiona las actualizaciones |
 | `icons/` | Iconos de la aplicación |
 | `_headers` | Cabeceras de seguridad (se usan en Cloudflare Pages y Netlify) |
+| `LICENCIAS-TERCEROS.txt` | Avisos y textos de las licencias de los componentes de terceros incluidos (SheetJS, Font Awesome, Tailwind). Conserva este archivo al publicar |
 
 ## Cómo publicarla (elige una)
 
